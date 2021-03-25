@@ -1,12 +1,15 @@
 import React, {Component} from "react"
 
+import Plogin from "../StyleComponents/Plogin"
 
-export default class Login extends Component {
+export default class Register extends Component {
     render() {
-        return (
+        return  (
             <div>
-                Hello login
+                <Plogin />
             </div>
         )
+
+
     }
 }

@@ -1,11 +1,11 @@
 import React, {Component} from "react"
-import Phome from "../StyleComponents/Phome"
+import Ppost from "../StyleComponents/Ppost"
 
-export default class Home extends Component {
+export default class Post extends Component {
     render() {
         return (
             <div style={{margin: 90}}>
-                <Phome />
+                {/*<Ppost />*/}
             </div>
         )
     }

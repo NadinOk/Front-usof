@@ -1,57 +1,132 @@
-import React, {Component} from "react"
-import {Navbar, Nav, Container, Form, Button} from "react-bootstrap";
+import React, { Component } from "react"
+import { Navbar, Nav, Container, Form, NavLink, Button } from "react-bootstrap";
 import logo from '../images/Logo.png'
-import {  Link} from "react-router-dom"
-import Home from "../Pages/Home";
-import Register from "../Pages/Register";
-import Login from "../Pages/Login";
-import Categories from "../Pages/Categories";
+import axios from "axios";
+import { connect } from 'react-redux'
+import { slide as Menu } from 'react-burger-menu'
 
+//import fon from '../images/fon.png'
 
+class Header extends Component {
 
-export default class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.menu = React.createRef();
+        this.isMenuOpen = false;
+    }
+
+    handleSubmit = event => {
+        event.preventDefault();
+
+        axios.defaults.headers.post['Access-Control-Allow-Origin'] = true;
+        axios.post(`http://localhost:3001/api/auth/logout`, this.state)
+            .then(res => {
+                axios.defaults.headers['authorization'] = localStorage.removeItem('token');
+                this.props.onUserLoggedOut()
+
+            })
+            .finally(() => {
+                window.alert('User logged out')
+                window.location.href = 'http://localhost:3000/posts'
+            })
+    }
+    showSettings (event) {
+        event.preventDefault();
+    }
+
+    toggleMenu = event => {
+        this.menu.current.style.display = this.isMenuOpen ? "none" : "initial"
+        // this.isMenuOpen = !!this.isMenuOpen
+    }
+
     render() {
+        let loginLogoutButton, regButton, profileButton;
+        if (this.props.currentUser) {
+            loginLogoutButton = <NavLink onClick={this.handleSubmit} className="btn"><h4>Log out</h4></NavLink>
+            regButton = null
+            profileButton = <a href="/profile">Profile </a>
+        } else {
+            loginLogoutButton = <NavLink href="/login"><h4>Log in</h4></NavLink>
+            regButton = <NavLink href="/register"><h4>Sing up</h4></NavLink>
+            profileButton = null
+        }
         return (
             <>
-            <Navbar fixed="top" collapseOnSelect  expand="md" bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand href="/">
-                        <img
-                            src={logo}
-                            height="50"
-                            width="150"
-                            className="inline align-top"
-                            alt="Logo"
-                        />
-                    </Navbar.Brand>
-                    <Navbar.Toggle  />
-                    <Navbar.Collapse id="responsive-navbar-nav" >
-                        <Nav className="pages" >
-                            <Nav.Link href="/categories"> Categories </Nav.Link>
-
-                        </Nav>
-                        <Form inline >
-                            <Form.Control
-                                type="text"
-                                placeholder="Search"
-                                className="mr-sm-3 "
+                <Navbar fixed="top" collapseOnSelect expand="md" bg="dark" variant="white">
+                    <Container>
+                        <Navbar.Brand href="/posts">
+                            <img
+                                src={logo}
+                                className="inline"
+                                alt="Logo"
                             />
-                            {/*<Button variant="outline-info"> Search</Button>*/}
-                            <Nav>
-                            <Nav.Link href="/login"> Log in </Nav.Link>
-                            <Nav.Link href="/register"> Sing up </Nav.Link>
-                            <Nav.Link href="/logout"> Log out </Nav.Link>
+                        </Navbar.Brand>
+                        <Navbar.Toggle/>
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className="pages">
+                                <NavLink href="/categories"><h4>Categories</h4></NavLink>
                             </Nav>
-                        </Form>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+                            <Form inline>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Search"
+                                    className="mr-sm-3"
 
+                                />
+                                <Nav>
+                                    <main>
+                                        <div className="menu-block">
+                                            <nav className="menu-nav">
+                                                <a href="/post/create">New post </a>
+                                                <a href="/settings">Settings </a>
+                                                <a href="/security">Security </a>
+                                                {profileButton}
+                                            </nav>
+
+                                        </div>
+                                        {/*<div className="menu-block">*/}
+                                        {/*    <div className="menu-button" onClick={this.toggleMenu}>menu</div>*/}
+                                        {/*    <nav ref={this.menu} className="menu-nav">*/}
+                                        {/*        <div className="item">*/}
+                                        {/*            <a href="/post/create">New post </a>*/}
+                                        {/*        </div>*/}
+                                        {/*        <div className="item">*/}
+                                        {/*            <a href="/settings">Settings </a>*/}
+                                        {/*        </div>*/}
+                                        {/*        <div className="item">*/}
+                                        {/*            <a href="/security">Security </a>*/}
+                                        {/*        </div>*/}
+                                        {/*        {profileButton}*/}
+                                        {/*    </nav>*/}
+
+                                        {/*</div>*/}
+                                        {/*<App />*/}
+                                    </main>
+                                    {regButton}
+                                    {loginLogoutButton}
+                                </Nav>
+                            </Form>
+
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
             </>
-
-
 
 
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        currentUser: state.currentUser
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onUserLoggedOut: () => dispatch({type: 'LOGOUT'})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -1,22 +1,343 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-}
+@import "~materialize-css/dist/css/materialize.min.css";
+/*body {*/
+/*  margin: 0;*/
+/*  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+/*    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+/*    sans-serif;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  !*background-repeat: no-repeat!important;*!*/
+/*  !*background: rgb(2,0,36)!important;*!*/
+/*  !*background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(2,0,36,1) 0%, rgba(28,97,102,1) 24%, rgba(42,223,214,1) 100%)!important;*!*/
+/*}*/
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-form input {
-  width: 900px
+/*form input {*/
+/*  width: 900px*/
+/*}*/
+
+body {
+    background-image: url("images/fon.png");
+    background-size: 1400px, 1400px;
+}
+.btn {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.container-reg {
+    width: 600px;
+    height: 550px;
+    background-color: rgba(222, 229, 223, 0.2);
+    margin: auto;
+    margin-top: 200px;
+    padding: unset;
+    text-align: center;
+    box-shadow: 0 -5px deepskyblue;
+}
+
+.content-post {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}
+
+
+.tcontainer {
+  display: block;
+  border: 10px solid #0c5460;
+  margin-top: 2px;
+}
+
+.tcontainer-comment{
+  border: 5px solid #0e698a;
+  margin-top: 2px;
+}
+
+.content {
+  display: block;
+}
+
+.author {
+  display: block;
+}
+
+.author-content {
+  display: inline-block;
+  width: 50%;
+}
+
+
+.author-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+/*input.blue-input:focus + label {*/
+/*  color: deepskyblue;*/
+/*}*/
+
+input.blue-input:focus {
+  border-bottom: 1px solid deepskyblue;
+  box-shadow: 0 1px 0 0 deepskyblue;
+}
+
+.button-custom {
+  margin-right: 10px;
+  text-decoration: none;
+  background-color: #051839;
+  width: 200px;
+  color: white;
+  height: 36px;
+
+
+}
+.card {
+  width: 500px;
+  height: 450px;
+  position: relative;
+  margin-top: 10px;
+  margin-right: 10px;
+  transition: box-shadow .25s;
+  border-radius: 4px;
+
+}
+.card-action {
+  margin-top: 45px;
+}
+.btn-resset {
+  width: 200px;
+  height: 35px;
+  background-color: lightskyblue;
+  margin-top: 50px;
+}
+.nav-wrapper {
+  background-color: #031024;
+  background-image: url("images/fon.png");
+
+}
+
+.image-Fone:hover {
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+}
+
+body.home-page {
+  background-image: url("images/fon.png");
+  background-size: 1200px, 680px;
 }
 
 input {
   width: 300px!important;
 }
+
+
+
+img.inline {
+  width: 103px;
+  height: 52px;
+  margin-left: -100px;
+  margin-right: 30px;
+
+}
+.text-post {
+  width: auto;
+  height: auto;
+  background-color: rgba(222, 229, 223, 0.2);
+  margin-top: -40px ;
+  padding: unset;
+  text-align: center;
+  box-shadow: 0 -5px deepskyblue;
+  color: whitesmoke;
+}
+.pages {
+  margin-right: 40px;
+}
+
+/*burger menu*/
+.menu-block menu-btn {
+  margin-right: 60px;
+  margin-block-start: -60px;
+  padding-left: 117px;
+  display: block;
+  width: 50px;
+  /*height: 50px;*/
+  position: absolute;
+}
+.menu-block menu-btn span,
+.menu-block menu-btn span::before,
+.menu-block menu-btn span::after {
+  position: absolute;
+  top: 50%; margin-top: -1px;
+  left: 50%; margin-left: -10px;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+}
+.menu-block menu-btn span::before,
+.menu-block menu-btn span::after {
+  content: '';
+  display: block;
+  transition: 0.5s;
+}
+.menu-block menu-btn span::before {
+  transform: translateY(-5px);
+}
+.menu-block menu-btn span::after {
+  transform: translateY(5px);
+}
+
+.menu-block menu-btn:active span:before {
+  transform: rotate(-35deg);
+  width: 10px;
+  transform-origin: left bottom;
+}
+.menu-block menu-btn:active span:after {
+  transform: rotate(35deg);
+  width: 10px;
+  transform-origin: left top;
+}
+
+.menu-block {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+.menu-block menu-nav {
+  width: 210px;
+  margin-block-start: 20px;
+  margin-left: 87px;
+
+}
+.menu-block nav{
+  background-color: #0c5c70;
+  width: 250px;
+  text-align: center;
+  /*display: none;*/
+}
+.menu-block menu-nav a  {
+
+  display: initial;
+  text-decoration: none;
+  color: black;
+  margin-left: 5px;
+}
+
+.menu-block menu-nav item {
+  display: block;
+  width: 100%;
+}
+
+.menu-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+/*.menu-block menu-nav a  {*/
+/*  transition: 0.5s;*/
+/*  transform-origin: right center;*/
+/*  transform: translateX(50%);*/
+/*  opacity: 0;*/
+/*}*/
+.menu-block menu-nav a:active {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+/*style buttons from post*/
+
+.comment {
+  width: 100px;
+  height: 40px;
+  margin-left: 70px;
+}
+
+.container-like {
+
+  margin-right: 20px;
+  text-align: center;
+  width: 1px;
+  height: 30px;
+}
+
+.container-dislike {
+  margin-right: 10px;
+  width: 10px;
+  height: 30px;
+}
+
+.input mainform-control-newpost  {
+  margin-top: 10%;
+  width: 600px;
+  height: 60px;
+  color: white;
+}
+
+.cat-box {
+  color: whitesmoke;
+}
+.text-newpost {
+  width: 900px;
+  height: 500px;
+  background-color: rgba(222, 229, 223, 0.2);
+  margin-top: 70px;
+  padding: unset;
+  text-align: center;
+  box-shadow: 0 -5px deepskyblue;
+
+
+
+}
+.tcontainer-text {
+  width: 900px;
+  height: 500px;
+  margin-left: 4px;
+  margin-right: 40px;
+  margin-top: 7px;
+  padding: 60px;
+  text-align: center;
+  border: 10px solid #0c5460;
+
+
+}
+.form-group-newpost {
+  padding-right: 1px;
+  margin: -5px;
+
+}
+
+.file-box{
+  margin-left: 20px;
+}
+.file-box img {
+  margin-top: 40px;
+
+}
+
+.img default_img {
+  width: 40px;
+  height: 40px;
+  margin: 30px;
+}
+.image_avatar {
+  margin: 50px;
+  width: 100px;
+  height: 100px;
+}
+
+.footer {
+  background-color: rgba(7, 35, 48, 0.8);;
+}
+
+ .pagin{
+   width: 100%;
+  background-color: rgba(222, 229, 223, 0.1);
+ justify-content: center;
+
+}
+

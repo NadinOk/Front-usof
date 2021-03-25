@@ -1,12 +1,16 @@
 import React, {Component} from "react"
-
+import axios from "axios";
+import Pregister from "../StyleComponents/Pregister"
 
 export default class Register extends Component {
     render() {
-        return (
+        return  (
             <div>
-                <h1>Hello register</h1>
+                <Pregister />
             </div>
         )
-    }
+
+
+     }
 }
+
